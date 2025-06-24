@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: #007bff;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .search-bar {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .support-section {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .support-section h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        details {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+
+        summary {
+            padding: 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            color: #333;
+            font-weight: 500;
+        }
+
+        summary:hover {
+            color: #007bff;
+        }
+
+        details[open] summary {
+            color: #007bff;
+        }
+
+        details p {
+            padding: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #ddd;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .chat-container {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: #007bff;
+            color: #fff;
+            padding: 0.8rem;
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header button {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .chat-body {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 1rem;
+            background: #f9f9f9;
+        }
+
+        .chat-message {
+            margin-bottom: 1rem;
+        }
+
+        .chat-message.user {
+            text-align: right;
+        }
+
+        .chat-message.bot {
+            text-align: left;
+        }
+
+        .chat-message p {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+        }
+
+        .chat-message.user p {
+            background: #007bff;
+            color: #fff;
+        }
+
+        .chat-message.bot p {
+            background: #e9ecef;
+            color: #333;
+        }
+
+        .chat-input {
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+
+        .chat-input input {
+            flex: 1;
+            border: none;
+            padding: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .chat-input button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+        }
+
+        .contact-section {
+            background: #fff;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: block;
+            margin: 1rem auto;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #fff;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav a {
+                margin-left: 1rem;
+            }
+
+            .chat-container {
+                width: 90%;
+                right: 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">SupportHub</div>
+            <div>
+                <a href="#home">Home</a>
+                <a href="#support">Support</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>How can we help you today?</h1>
+        <p>Find answers to your questions or get in touch with our support team.</p>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for help...">
+        </div>
+    </section>
+
+    <section class="support-section" id="support">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+            <details>
+                <summary>How do I place an order?</summary>
+                <p>Browse our menu, add items to your cart, and proceed to checkout. You'll enter delivery and payment details.</p>
+            </details>
+            <details>
+                <summary>What are your delivery hours?</summary>
+                <p>Our delivery hours are 10:00 AM to 10:00 PM, daily.</p>
+            </details>
+            <details>
+                <summary>What payment methods do you accept?</summary>
+                <p>We accept credit/debit cards (Visa, Mastercard, RuPay), NetBanking, UPI, and Cash on Delivery.</p>
+            </details>
+            <details>
+                <summary>How can I track my order?</summary>
+                <p>Once confirmed, you'll get a tracking link via email. You can also log into your account.</p>
+            </details>
+            <details>
+                <summary>What is your refund policy?</summary>
+                <p>Refunds are issued for incorrect or damaged orders. Please see our full refund policy for details.</p>
+            </details>
+        </div>
+        <div class="cards">
+            <div class="card" id="live-chat-card">
+                <h3>Live Chat</h3>
+                <p>Connect with our support bot for quick assistance.</p>
+                <button onclick="openChat()">Start Chat</button>
+            </div>
+            <div class="card">
+                <h3>Guides</h3>
+                <p>Access detailed guides and tutorials to help you get started.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="chat-container" id="chat-container">
+        <div class="chat-header">
+            <span>Support Bot</span>
+            <button onclick="closeChat()">✖</button>
+        </div>
+        <div class="chat-body" id="chat-body">
+            <div class="chat-message bot">
+                <p>Hello! I'm here to help. Ask me a question, and I'll do my best to assist.</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chat-input" placeholder="Type your question...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <section class="contact-section" id="contact">
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Your name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Your email">
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Your message"></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 SupportHub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqs = [
+                { question: "How do I place an order?", answer: "Browse our menu, add items to your cart, and proceed to checkout. You'll enter delivery and payment details." },
+                { question: "Do I need an account to order?", answer: "No, you can check out as a guest, but an account offers faster checkout and order tracking." },
+                { question: "How can I track my order?", answer: "Once confirmed, you'll get a tracking link via email. You can also log into your account." },
+                { question: "Can I modify or cancel my order after it's been placed?", answer: "Modifications or cancellations are possible within a short window. Contact support immediately with your order number." },
+                { question: "What if I forgot my password?", answer: "Click 'Forgot Password' on the login page and follow the reset instructions." },
+                { question: "What are your delivery hours?", answer: "Our delivery hours are 10:00 AM to 10:00 PM, daily." },
+                { question: "Do you deliver to my area?", answer: "Enter your postcode on our homepage or at checkout to confirm delivery to your location." },
+                { question: "What are the delivery charges?", answer: "Delivery charges vary by location and order total. They're clearly shown at checkout." },
+                { question: "What if my delivery is delayed?", answer: "Check your tracking for updates. If concerns persist, contact customer support." },
+                { question: "Can I schedule a delivery for a specific time?", answer: "Currently, we offer delivery within a specified window." },
+                { question: "What payment methods do you accept?", answer: "We accept credit/debit cards (Visa, Mastercard, RuPay), NetBanking, UPI, and Cash on Delivery." },
+                { question: "Is it safe to pay online?", answer: "Yes, we use secure, encrypted payment gateways to protect your information." },
+                { question: "What if my payment fails?", answer: "Try again or use another method. If issues persist, contact your bank or our support team." },
+                { question: "How can I find allergen information?", answer: "Allergen details are on each product's description page. Contact us for specific dietary concerns." },
+                { question: "What if there's an issue with my food order?", answer: "Contact customer support immediately with details and your order number. We'll resolve it." },
+                { question: "How do you ensure food safety and hygiene?", answer: "We follow strict food safety and hygiene standards, from preparation to delivery. Our kitchens are regularly inspected." },
+                { question: "How do I create an account?", answer: "Click 'Sign Up' or 'Register' and follow the prompts to enter your details." },
+                { question: "Can I save multiple delivery addresses?", answer: "Yes, you can save and manage multiple addresses in your account settings." },
+                { question: "Is there a minimum order value?", answer: "Yes, our minimum order value is ₹150." },
+                { question: "How long does delivery usually take?", answer: "Delivery typically takes between 30-45 minutes, depending on your location and peak hours." },
+                { question: "Can I order from multiple restaurants in one order?", answer: "No, each order is placed with a single restaurant at a time." },
+                { question: "What if an item is out of stock?", answer: "If an item is out of stock, it will be marked as unavailable, or we'll contact you for a substitute." },
+                { question: "Do you offer vegetarian/vegan options?", answer: "Yes, we have a dedicated section for vegetarian and vegan dishes." },
+                { question: "Are your ingredients fresh?", answer: "Absolutely, we prioritize fresh, high-quality ingredients sourced daily." },
+                { question: "Can I leave a tip for the delivery driver?", answer: "Yes, you can add a tip during checkout, or provide it directly to the driver." },
+                { question: "What is your refund policy?", answer: "Refunds are issued for incorrect or damaged orders. Please see our full refund policy for details." },
+                { question: "How do I apply a promo code or discount?", answer: "Enter your promo code in the designated box at checkout before finalizing your order." },
+                { question: "Can I give feedback on my order?", answer: "Yes, you'll receive an email after delivery to rate your experience and leave feedback." },
+                { question: "What if I receive a damaged or incorrect item?", answer: "Please photograph the item and contact customer support immediately for a replacement or refund." },
+                { question: "Do you offer catering services?", answer: "Yes, we offer catering for events. Please visit our 'Catering' section for more information." },
+                { question: "Are there any loyalty programs or rewards?", answer: "Yes, join our loyalty program to earn points on every order, redeemable for discounts." },
+                { question: "How do I update my account information?", answer: "Log in to your account and go to 'Profile Settings' to update your details." },
+                { question: "Can I reorder from my past orders?", answer: "Yes, your order history allows for easy reordering of previous meals." },
+                { question: "Do you use any preservatives in your food?", answer: "We aim to use minimal to no artificial preservatives; our focus is on fresh preparation." },
+                { question: "What is your privacy policy?", answer: "Our privacy policy details how we collect, use, and protect your personal information. It's available on our website." },
+                { question: "How can I contact customer support?", answer: "You can contact us via phone, email, or live chat. Details are on our 'Contact Us' page." },
+                { question: "Are there any delivery restrictions (e.g., apartments)?", answer: "Please provide clear instructions for apartments/gated communities to ensure smooth delivery." },
+                { question: "Can I order for a future date/time?", answer: "Currently, we do not support pre-orders for specific future dates or times." },
+                { question: "What if I have dietary restrictions not listed?", answer: "Please contact us directly before ordering to discuss specific dietary needs." },
+                { question: "Do you offer gift cards?", answer: "Yes, gift cards are available for purchase on our website." },
+                { question: "How do I redeem a gift card?", answer: "Enter your gift card code at checkout to apply its value to your order." },
+                { question: "What is your cancellation policy for catering orders?", answer: "Catering cancellation policies vary; please refer to your catering agreement or contact us." },
+                { question: "Do you offer corporate accounts?", answer: "Yes, we have corporate account options. Contact our sales team for more information." },
+                { question: "Can I pick up my order instead of having it delivered?", answer: "Some restaurants offer pickup. Look for the 'Pickup' option during checkout." },
+                { question: "How do I know my order has been confirmed?", answer: "You'll receive an email and SMS confirmation once your order is accepted." },
+                { question: "What if I don't receive an order confirmation?", answer: "Check your spam folder first. If not there, contact customer support with your payment details." },
+                { question: "Are there any holiday delivery hours?", answer: "Holiday delivery hours may vary and will be announced on our website in advance." },
+                { question: "Do you use artificial colors or flavors?", answer: "We strive to use natural ingredients and avoid artificial colors or flavors wherever possible." },
+                { question: "Can I provide specific instructions for my order?", answer: "Yes, there's a 'Special Instructions' box during checkout for dietary notes or preparation requests." },
+                { question: "What if I want to change my delivery address after ordering?", answer: "Contact support immediately. Changes might be possible if the order hasn't left the restaurant." },
+                { question: "How do I unsubscribe from marketing emails?", answer: "Click the 'Unsubscribe' link at the bottom of any marketing email you receive." },
+                { question: "Do you have a mobile app?", answer: "Yes, download our mobile app from the App Store or Google Play for easy ordering." },
+                { question: "What kind of packaging do you use?", answer: "We use eco-friendly, food-grade, recyclable packaging to keep your food fresh." },
+                { question: "Can I order alcohol through your platform?", answer: "No, we do not currently offer delivery of alcoholic beverages." },
+                { question: "What is your policy on food allergies and cross-contamination?", answer: "We take allergies seriously but cannot guarantee zero cross-contamination in shared kitchens. Please inform us." },
+                { question: "How do I report a technical issue with the website/app?", answer: "Please contact customer support with details of the issue and screenshots if possible." },
+                { question: "Do you offer any discounts for first-time users?", answer: "Yes, new users often receive a special discount. Check our promotions page." },
+                { question: "Can I pay with multiple payment methods for one order?", answer: "No, only one payment method can be used per order." },
+                { question: "What happens if the driver can't find my address?", answer: "The driver will attempt to contact you. Ensure your phone number is correct." },
+                { question: "Are tips refundable?", answer: "Tips are generally non-refundable once the order is delivered." },
+                { question: "Do you offer nutritional information for your dishes?", answer: "Nutritional information is available for some dishes. Please check the item description." },
+                { question: "Can I request specific cutlery or napkins?", answer: "You can add a note in the special instructions for cutlery/napkins." },
+                { question: "What if I want to cancel a scheduled future order?", answer: "Contact support with your order number. Cancellation policies may apply." },
+                { question: "How do I provide feedback about a specific driver?", answer: "You can rate your driver after delivery or contact customer support with your feedback." },
+                { question: "Are your prices inclusive of taxes?", answer: "Yes, all listed prices are inclusive of applicable taxes." },
+                { question: "Do you offer group ordering options?", answer: "No, currently we do not support group ordering features." },
+                { question: "What if I'm not satisfied with the resolution of my complaint?", answer: "You can request to escalate your complaint to a supervisor." },
+                { question: "How often do you update your menu?", answer: "Our menu is regularly updated with seasonal specials and new dishes." },
+                { question: "Do you have physical restaurant locations?", answer: "We are an online delivery platform; some restaurants we partner with have physical locations." },
+                { question: "Can I apply multiple promo codes to one order?", answer: "No, only one promo code can be applied per order." },
+                { question: "What if I want to order a customized meal not on the menu?", answer: "Please contact us directly to inquire about custom orders. It depends on restaurant capabilities." },
+                { question: "How do I delete my account?", answer: "Contact customer support to request account deletion." },
+                { question: "What security measures do you have for my personal data?", answer: "We use encryption and strict data protection protocols to secure your information." },
+                { question: "Do you offer job opportunities for delivery drivers?", answer: "Yes, visit our 'Careers' page for information on driver opportunities." },
+                { question: "Can I send an order as a gift to someone else?", answer: "Yes, you can enter the recipient's address and pay for the order." },
+                { question: "What if I placed an order to the wrong address?", answer: "Contact support immediately. If the order hasn't been dispatched, we might be able to change it." },
+                { question: "Do you have a satisfaction guarantee?", answer: "Yes, we strive for 100% customer satisfaction. Contact us if you're not happy." },
+                { question: "How do I change my registered phone number?", answer: "Log in to your account and update your phone number in your profile settings." },
+                { question: "Are your delivery vehicles temperature-controlled?", answer: "Our delivery partners use insulated bags to maintain food temperature during transit." },
+                { question: "What is the shelf life of your prepared meals?", answer: "Prepared meals are best consumed immediately upon delivery for optimal freshness and taste." },
+                { question: "Can I pre-order for a specific day next week?", answer: "Not at this time. All orders are for immediate delivery or within the current day's window." },
+                { question: "What if my credit card was charged twice?", answer: "Contact customer support with transaction details; we'll investigate and resolve it." },
+                { question: "Do you have a referral program?", answer: "Yes, refer friends and earn discounts! Check our 'Referral Program' section." },
+                { question: "How do I update my notification preferences?", answer: "Manage your email and SMS notification settings in your account profile." },
+                { question: "Is there a minimum age to order?", answer: "You must be 18 years or older to place an order." },
+                { question: "What if an item from my order is missing?", answer: "Contact us immediately with your order number, and we'll arrange a redelivery or refund." },
+                { question: "Do you offer discounts for bulk orders?", answer: "For large bulk orders, please contact our corporate sales team directly." },
+                { question: "Can I order from outside India?", answer: "No, our services are currently limited to deliveries within specific areas of India." },
+                { question: "What happens if I'm not home when the delivery arrives?", answer: "The driver will attempt to contact you. If unsuccessful, the order may be returned." },
+                { question: "Do you have vegetarian or non-vegetarian kitchens separate?", answer: "No, our partner restaurants may use shared kitchen spaces." },
+                { question: "How long does it take for a refund to process?", answer: "Refunds typically process within 5-7 business days, depending on your bank." },
+                { question: "Can I review a specific dish I ordered?", answer: "Yes, you can leave reviews for individual dishes after your order is complete." },
+                { question: "What are your holiday operational hours?", answer: "Holiday hours will be posted on our website and social media closer to the dates." },
+                { question: "Do you have a physical office I can visit?", answer: "No, we operate solely as an online food delivery service." },
+                { question: "How do I know my personal information is safe?", answer: "We employ industry-standard security measures and comply with data protection regulations." },
+                { question: "What if I need a GST invoice for my order?", answer: "You can request a GST invoice from customer support after your order is delivered." },
+                { question: "Can I change my order while it's in transit?", answer: "No, once an order is in transit, changes are not possible." },
+                { question: "What if my address is not recognized by your system?", answer: "Try entering a nearby landmark or contact customer support for assistance." },
+                { question: "Do you offer corporate discounts for employees?", answer: "Yes, contact our corporate sales team to discuss partnership opportunities." },
+                { question: "How do I know the estimated delivery time is accurate?", answer: "Our estimates are based on real-time traffic and restaurant preparation times." },
+                { question: "What if I ordered the wrong quantity of an item?", answer: "Contact support immediately. If the restaurant hasn't started preparing, we might adjust it." },
+                { question: "Can I link my social media accounts to my profile?", answer: "No, we do not currently support linking social media accounts." },
+                { question: "How do I report spam emails or calls claiming to be from you?", answer: "Please forward suspicious emails to our customer support for investigation." },
+                { question: "What measures are you taking regarding COVID-19 safety?", answer: "We follow all government guidelines, including contactless delivery and hygiene protocols." },
+                { question: "Do you offer customized meal plans?", answer: "No, we do not offer customized meal plans at this time." },
+                { question: "How can I suggest a new restaurant to be added to your platform?", answer: "You can suggest new restaurants via our 'Contact Us' page or social media." },
+                { question: "What if my food arrived cold?", answer: "Contact customer support immediately with details; we'll arrange a solution." }
+            ];
+
+            function openChat() {
+                document.getElementById('chat-container').style.display = 'block';
+            }
+
+            function closeChat() {
+                document.getElementById('chat-container').style.display = 'none';
+            }
+
+            function findAnswer(question) {
+                const normalizedQuestion = question.toLowerCase().trim();
+                const matchedFaq = faqs.find(faq => 
+                    faq.question.toLowerCase().includes(normalizedQuestion) || 
+                    normalizedQuestion.includes(faq.question.toLowerCase())
+                );
+                return matchedFaq ? matchedFaq.answer : 
+                    "I'm sorry, I don't have an answer for that. Please use the <a href='#contact'>Contact Us</a> form for further assistance.";
+            }
+
+            function sendMessage() {
+                const input = document.getElementById('chat-input');
+                const message = input.value.trim();
+                if (!message) return;
+
+                const chatBody = document.getElementById('chat-body');
+                const userMessage = document.createElement('div');
+                userMessage.className = 'chat-message user';
+                userMessage.innerHTML = `<p>${message}</p>`;
+                chatBody.appendChild(userMessage);
+
+                const response = findAnswer(message);
+                const botMessage = document.createElement('div');
+                botMessage.className = 'chat-message bot';
+                botMessage.innerHTML = `<p>${response}</p>`;
+                chatBody.appendChild(botMessage);
+
+                input.value = '';
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+
+            document.getElementById('chat-input').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
