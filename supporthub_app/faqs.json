@@ -1,0 +1,146 @@
+[
+  {
+    "question": "How do I place an order?",
+    "answer": "Browse our menu, add items to your cart, and proceed to checkout. You'll enter delivery and payment details."
+  },
+  {
+    "question": "What are your delivery hours?",
+    "answer": "Our delivery hours are 10:00 AM to 10:00 PM, daily."
+  },
+  {
+    "question": "What payment methods do you accept?",
+    "answer": "We accept credit/debit cards (Visa, Mastercard, RuPay), NetBanking, UPI, and Cash on Delivery."
+  },
+  {
+    "question": "How can I track my order?",
+    "answer": "Once confirmed, you'll get a tracking link via email. You can also log into your account."
+  },
+  {
+    "question": "What is your refund policy?",
+    "answer": "Refunds are issued for incorrect or damaged orders. Please see our full refund policy for details."
+  },
+  {
+    "question": "Do I need an account to order?",
+    "answer": "No, you can check out as a guest, but an account offers faster checkout and order tracking."
+  },
+  {
+    "question": "Can I modify or cancel my order after it's been placed?",
+    "answer": "Modifications or cancellations are possible within a short window. Contact support immediately with your order number."
+  },
+  {
+    "question": "What if I forgot my password?",
+    "answer": "Click 'Forgot Password' on the login page and follow the reset instructions."
+  },
+  {
+    "question": "Do you deliver to my area?",
+    "answer": "Enter your postcode on our homepage or at checkout to confirm delivery to your location."
+  },
+  {
+    "question": "What are the delivery charges?",
+    "answer": "Delivery charges vary by location and order total. They're clearly shown at checkout."
+  },
+  {
+    "question": "What if my delivery is delayed?",
+    "answer": "Check your tracking for updates. If concerns persist, contact customer support."
+  },
+  {
+    "question": "Can I schedule a delivery for a specific time?",
+    "answer": "Currently, we offer delivery within a specified window."
+  },
+  {
+    "question": "Is it safe to pay online?",
+    "answer": "Yes, we use secure, encrypted payment gateways to protect your information."
+  },
+  {
+    "question": "What if my payment fails?",
+    "answer": "Try again or use another method. If issues persist, contact your bank or our support team."
+  },
+  {
+    "question": "How can I find allergen information?",
+    "answer": "Allergen details are on each product's description page. Contact us for specific dietary concerns."
+  },
+  {
+    "question": "What if there's an issue with my food order?",
+    "answer": "Contact customer support immediately with details and your order number. We'll resolve it."
+  },
+  {
+    "question": "How do you ensure food safety and hygiene?",
+    "answer": "We follow strict food safety and hygiene standards, from preparation to delivery. Our kitchens are regularly inspected."
+  },
+  {
+    "question": "How do I create an account?",
+    "answer": "Click 'Sign Up' or 'Register' and follow the prompts to enter your details."
+  },
+  {
+    "question": "Can I save multiple delivery addresses?",
+    "answer": "Yes, you can save and manage multiple addresses in your account settings."
+  },
+  {
+    "question": "Is there a minimum order value?",
+    "answer": "Yes, our minimum order value is \u20b9150."
+  },
+  {
+    "question": "How long does delivery usually take?",
+    "answer": "Delivery typically takes between 30-45 minutes, depending on your location and peak hours."
+  },
+  {
+    "question": "Can I order from multiple restaurants in one order?",
+    "answer": "No, each order is placed with a single restaurant at a time."
+  },
+  {
+    "question": "What if an item is out of stock?",
+    "answer": "If an item is out of stock, it will be marked as unavailable, or we'll contact you for a substitute."
+  },
+  {
+    "question": "Do you offer vegetarian/vegan options?",
+    "answer": "Yes, we have a dedicated section for vegetarian and vegan dishes."
+  },
+  {
+    "question": "Are your ingredients fresh?",
+    "answer": "Absolutely, we prioritize fresh, high-quality ingredients sourced daily."
+  },
+  {
+    "question": "Can I leave a tip for the delivery driver?",
+    "answer": "Yes, you can add a tip during checkout, or provide it directly to the driver."
+  },
+  {
+    "question": "Can I reorder from my previous orders?",
+    "answer": "Yes, simply go to your order history and click on the reorder button next to your past orders."
+  },
+  {
+    "question": "Do you offer contactless delivery?",
+    "answer": "Yes, you can select the contactless delivery option during checkout."
+  },
+  {
+    "question": "How do I apply a promo code?",
+    "answer": "Enter your promo code at checkout in the 'Apply Promo Code' box before placing your order."
+  },
+  {
+    "question": "What should I do if I receive the wrong order?",
+    "answer": "Please contact our customer support immediately with your order ID and a photo of the received item."
+  },
+  {
+    "question": "Can I change my delivery address after placing the order?",
+    "answer": "You can update your address if the order hasn\u2019t been dispatched. Contact support as soon as possible."
+  },
+  {
+    "question": "Do you support bulk or corporate orders?",
+    "answer": "Yes, please contact our corporate sales team for large or recurring orders."
+  },
+  {
+    "question": "How do I delete my account?",
+    "answer": "You can request account deletion by contacting our customer support with your registered email."
+  },
+  {
+    "question": "Is my personal data safe with you?",
+    "answer": "Yes, we follow strict data protection protocols and use encryption to secure your information."
+  },
+  {
+    "question": "How do I contact customer support?",
+    "answer": "You can reach us via live chat, email, or phone. Visit our 'Contact Us' page for details."
+  },
+  {
+    "question": "Do you have a loyalty or rewards program?",
+    "answer": "Yes, you earn points on every order which can be redeemed for discounts in future purchases."
+  }
+]
